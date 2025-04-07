@@ -1,5 +1,5 @@
 import { isEscapeKey } from './util.js';
-import { showAlert } from './api.js';
+import { showAlert, showSuccess } from './api.js';
 import { sendData } from './api.js';
 
 const HASHTAGS_COUNT = 5;
@@ -204,6 +204,7 @@ const setUserFormSubmit = (onSuccess) => {
     const isValid = pristine.validate();
     if(isValid){
       blockSubmitButton();
+      showSuccess();
       sendData(new FormData(evt.target))
         .then(onSuccess)
         .catch(() => {
